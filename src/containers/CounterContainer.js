@@ -1,6 +1,7 @@
 import Counter from '../components/Counter';
 import * as actions from '../actions';
 import { connect } from 'react-redux';
+import { getRandomColor } from '../utils';
 
 /*
     컨테이너 컴포넌트를 store에 연결시켜주려면 react-redux의 connect함수를 사용해야 한다
@@ -27,7 +28,7 @@ const mapDispatchToProps = (dispatch) => ({
     onIncrement: () => dispatch(actions.increment()),
     onDecrement: () => dispatch(actions.decrement()),
     onSetColor: () => {
-        const color = 'black'; // 임시
+        const color = getRandomColor();
         dispatch(actions.setColor(color));
     }
 });
