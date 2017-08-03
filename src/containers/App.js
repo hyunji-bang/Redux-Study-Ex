@@ -13,9 +13,6 @@ class App extends Component {
             <Provider store={store}>
                 <div className="App">
                     <h1>Filter words</h1>
-                    <p className="InputField">
-                        <input type="text"/>
-                    </p>
                     <FilterList/>
                 </div>
             </Provider>

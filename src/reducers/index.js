@@ -4,16 +4,14 @@ const initialState = {
     filterBy: ''
 }
 
-function filtering(state = initialState, action) {
+export default function filtering(state = initialState, action) {
     switch (action.type) {
         case types.SET_FILTER:
-            return
-                Object.assign({}, state, {
+            console.log(`예전엔 ${state.filterBy}였고 지금은 ${action.input}`);
+            return Object.assign({}, state, {
                     filterBy: action.input
                 })
         default:
             return state;
     }
 }
-
-export default filtering;

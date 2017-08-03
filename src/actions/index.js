@@ -1,6 +1,6 @@
 import * as types from './ActionTypes';
 
-export const SET_FILTER = (input) => ({
+export const setFilter = (input) => ({
     type: types.SET_FILTER,
     input
 });
