@@ -1,30 +1,19 @@
 import * as types from '../actions/ActionTypes'
 
 const initialState = {
-    color: 'black',
-    number: 0
+    filterBy: ''
 }
 
-function counter(state = initialState, action) {
+function filtering(state = initialState, action) {
     switch (action.type) {
-        case types.INCREMENT:
-            return {
-                ...state,
-                number: state.number + 1
-            }
-        case types.DECREMENT:
-            return {
-                ...state,
-                number: state.number - 1
-            }
-        case types.SET_COLOR:
-            return {
-                ...state,
-                color: action.color
-            }
+        case types.SET_FILTER:
+            return
+                Object.assign({}, state, {
+                    filterBy: action.input
+                })
         default:
             return state;
     }
 }
 
-export default counter;
+export default filtering;

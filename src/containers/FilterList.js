@@ -5,7 +5,7 @@ const Frameworks = ['React', 'Vue', 'Angular'];
 const Filter = () => {
     return (
         <ul>
-            {Frameworks.map((item, index) => <li>{item}</li> )}
+            {Frameworks.map((item, index) => <li key={index}>{item}</li> )}
         </ul>
     )
 }
