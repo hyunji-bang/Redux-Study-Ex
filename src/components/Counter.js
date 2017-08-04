@@ -1,6 +1,28 @@
 import React, { Component } from 'react';
 
 class Counter extends Component {
+    constructor(){
+        super();
+
+        this.state = {
+            number: 0
+        }
+
+        this.onIncrement = this.onIncrement.bind(this);
+        this.onDecrement = this.onDecrement.bind(this);
+
+    }
+    onIncrement(){
+        this.setState({
+            number: this.state.number + 1
+        })
+    }
+    onDecrement(){
+        this.setState({
+            number: this.state.number - 1
+        })
+    }
+
     render() {
         return (
             <div className="Counter">
@@ -9,11 +31,11 @@ class Counter extends Component {
                 </p>
 
                 <div className="CountButtons">
-                    <button>Plus</button>
-                    <button>Minus</button>
+                    <button onClick={this.onIncrement}>Plus</button>
+                    <button onClick={this.onDecrement}>Minus</button>
                 </div>
 
-                <p className="CountResult">1</p>
+                <p className="CountResult">{this.state.number}</p>
 
             </div>
         )
