@@ -5,27 +5,29 @@ class Counter extends Component {
         super();
 
         this.state = {
-            number: 0
+            number: 0,
+            diff: 1
         }
 
         this.onIncrement = this.onIncrement.bind(this);
         this.onDecrement = this.onDecrement.bind(this);
+        this.setDiff = this.setDiff.bind(this);
 
     }
-    onIncrement(){
+    onIncrement(diff){
         this.setState({
-            number: this.state.number + 1
+            number: this.state.number + diff
         })
     }
-    onDecrement(){
+    onDecrement(diff){
         this.setState({
-            number: this.state.number - 1
+            number: this.state.number - diff
         })
     }
 
     setDiff(e){
         this.setState({
-            number: this.state.diff
+            diff: e.target.value
         })
     }
 
@@ -33,7 +35,7 @@ class Counter extends Component {
         return (
             <div className="Counter">
                 <p className="InputField">
-                    <input type="text" onChange={this.setDiff(e)}/>
+                    <input type="text" onChange={this.setDiff}/>
                 </p>
 
                 <div className="CountButtons">
