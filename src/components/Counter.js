@@ -14,14 +14,14 @@ class Counter extends Component {
         this.setDiff = this.setDiff.bind(this);
 
     }
-    onIncrement(diff){
+    onIncrement(){
         this.setState({
-            number: this.state.number + diff
+            number: this.state.number + this.state.diff
         })
     }
-    onDecrement(diff){
+    onDecrement(){
         this.setState({
-            number: this.state.number - diff
+            number: this.state.number - this.state.diff
         })
     }
 
