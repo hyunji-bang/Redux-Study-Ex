@@ -23,11 +23,17 @@ class Counter extends Component {
         })
     }
 
+    setDiff(e){
+        this.setState({
+            number: this.state.diff
+        })
+    }
+
     render() {
         return (
             <div className="Counter">
                 <p className="InputField">
-                    <input type="text"/>
+                    <input type="text" onChange={this.setDiff(e)}/>
                 </p>
 
                 <div className="CountButtons">
