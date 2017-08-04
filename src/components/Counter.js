@@ -16,7 +16,7 @@ class Counter extends Component {
     }
     onIncrement(){
         this.setState({
-            number: this.state.number + this.state.diff
+            number: +this.state.number + +this.state.diff
         })
     }
     onDecrement(){
