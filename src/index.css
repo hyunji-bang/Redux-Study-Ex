@@ -26,11 +26,30 @@ ul, li {
     height: calc(100% - 20px);
 }
 .InputField {
-    margin: 10px 10px 40px 10px;
+    margin: 10px;
 }
 input {
     border: 1px #000 solid;
-    width: 50%;
+    width: 120px;
     height: 30px;
     line-height: 30px;
+    font-size: 20px;
+    text-align: center;
+}
+.CountButtons button {
+    width: 55px;
+    height: 40px;
+    margin: 10px 5px 50px;
+    background: #aaa;
+    color: #fff;
+}
+.CountResult {
+    background: #ddd;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 50px;
+    font-size: 30px;
 }
