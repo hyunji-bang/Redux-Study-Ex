@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { FilterList } from './FilterList';
+import QQQ from './FilterList';
 
 import { createStore } from 'redux';
 import reducers from '../reducers';
 import { Provider } from 'react-redux';
 
-const store = createStore(reducers);
+import {composeWithDevTools} from 'redux-devtools-extension';
+
+const store = createStore(reducers, composeWithDevTools());
 
 class App extends Component {
     render() {
@@ -13,7 +15,7 @@ class App extends Component {
             <Provider store={store}>
                 <div className="App">
                     <h1>Filter words</h1>
-                    <FilterList/>
+                    <QQQ/>
                 </div>
             </Provider>
         );

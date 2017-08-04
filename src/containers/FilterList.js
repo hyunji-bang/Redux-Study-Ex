@@ -5,19 +5,25 @@ import { setFilter } from '../actions';
 
 const FRAMEWORKS = ['React', 'Vue', 'Angular'];
 
-export class FilterList extends Component {
+class FilterList extends Component {
+
+    handleOnChange = (qerere) => {
+        const aa = qerere.target.value;
+        this.props.ccc(aa);
+    };
+
     render() {
 
-        const { filterBy, updateFilter } = this.props;
+        const { bbb } = this.props;
         console.log(this.props);
         return (
             <div className="FilterList">
             <h2>Filter List</h2>
                 <p className="InputField">
-                    <input type="text" placeholder={this.props.filterBy} onChange={updateFilter}/>
+                    <input type="text" placeholder={this.props.filterBy} onChange={this.handleOnChange}/>
                 </p>
 
-                <List items={FRAMEWORKS} filterBy={filterBy}/>
+                <List items={FRAMEWORKS} filterBy={bbb}/>
             </div>
         )
     }
@@ -31,20 +37,20 @@ const List = ({ items, filterBy }) => {
                 .map((item, index) => <li key={index}>{item}</li> )}
         </ul>
     )
-}
+};
 
-const mapStateToProps = (state) => {
+const w = (aaa) => {
     return {
-        filterBy: state.filterBy
+        bbb: aaa.filterBy
     }
-}
+};
 
-const mapDispatchToProps = ( dispatch ) => {
+const e = ( c ) => {
     return {
-        updateFilter: (ev) => dispatch(setFilter(ev.target.value))
+        ccc: (value) => c(setFilter(value))
     }
-}
+};
 
-FilterList = connect(mapStateToProps, mapDispatchToProps)(FilterList);
+const QQQ = connect(w, e)(FilterList);
 
-
+export default QQQ;
