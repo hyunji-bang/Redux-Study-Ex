@@ -1,33 +1,14 @@
 import React from 'react';
 
-class InputBox extends React.Component{
-    constructor(props){
-        super();
-        this.handleInput = this.handleInput.bind(this);
-        this.state = {
-            number: 0
-        };
-    }
-    handleInput = e => {
-        console.log(e.target.value);
-        var inputNumber = e.target.value;
-        this.setState = {
-            number: inputNumber
-        }
-    }
-
+class InputBox extends React.Component {
     render(){
-        console.log('this.props:', this.props)
         return (
             <div className="InputBox">
-                <input type="number" onChange={this.handleInput}/>
-
-                <button
-                    onClick={this.props.saveMoney}>
+                <input type="number" onChange={this.props.handleInput}/>
+                <button onClick={this.props.updateSave}>
                     입금
                 </button>
-                <button 
-                    onClick={this.props.takeMoney}>
+                <button onClick={this.props.updateTake}>
                     출금
                 </button>
             </div>

@@ -1,74 +1,54 @@
 import React from 'react';
 import InputBox from '../components/InputBox';
-//import AccountBox from '../components/AccountBox';
+import AccountBox from '../components/AccountBox';
 
-class App extends React.Component{
-    constructor(props){
-        super(props);
+class App extends React.Component {
+    constructor(){
+        super();
         this.state = {
-            number: 0,
+            input: 0,
             remain: 0,
             save: 0,
             take: 0
         };
-        this.saveMoney =this.saveMoney.bind(this);
-        this.takeMoney =this.takeMoney.bind(this);
-    }
-    saveMoney = number => {
+        this.handleInput = this.handleInput.bind(this)
+        this.updateSave = this.updateSave.bind(this)
+        this.updateTake = this.updateTake.bind(this)
+    };
+    handleInput = e => {
         this.setState({
-            save: +this.state.remain + +number
+            input: e.target.value
+        })
+    }
+    updateSave = input => {
+        this.setState({
+            save: this.state.save + ( this.state.input * 1 ),
+            remain: this.state.remain + ( this.state.input * 1 )
         });
     }
-    takeMoney = number => {
+    updateTake = input => {
         this.setState({
-            take: this.state.remain - number
+            take: this.state.take - ( this.state.input * 1),
+            remain: this.state.remain - ( this.state.input * 1)
         });
     }
-
     render(){
+        // console.log(this.state.save);
         return (
             <div className="App">
-                <InputBox 
-                    saveMoney={this.saveMoney}
-                    takeMoney={this.takeMoney}/>
-                <div className="AccountBox">
-                    <table>
-                        <thead>
-                            <th>입금</th>
-                            <th>출금</th>
-                            <th>잔액</th>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>{this.state.save}</td>
-                                <td>{this.state.take}</td>
-                                <td>{this.state.remain}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <InputBox
+                    handleInput={this.handleInput}
+                    updateSave={this.updateSave}
+                    updateTake={this.updateTake}
+                    />
+                <AccountBox
+                    saveState={this.state.save}
+                    takeState={this.state.take}
+                    remainState={this.state.remain}
+                />
             </div>
         )
     }
 }
 
 export default App;
-
-const AccountBox = () => (
-    <div className="AccountBox">
-        <table>
-            <thead>
-                <th>입금</th>
-                <th>출금</th>
-                <th>잔액</th>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>{this.state.save}</td>
-                    <td>{this.state.take}</td>
-                    <td>{this.state.remain}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-)
