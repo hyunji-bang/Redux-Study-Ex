@@ -1,6 +1,14 @@
 import React from 'react';
 
 const AccountBox = (props) => {
+
+    const AccountList = (
+        <tr>
+            <td>{props.saveState}</td>
+            <td>{props.takeState}</td>
+            <td>{props.remainState}</td>
+        </tr>
+    )
     return (
         <div className="AccountBox">
             <table>
@@ -12,11 +20,7 @@ const AccountBox = (props) => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>{props.saveState}</td>
-                        <td>{props.takeState}</td>
-                        <td>{props.remainState}</td>
-                    </tr>
+                    {AccountList}
                 </tbody>
             </table>
         </div>
