@@ -1,16 +1,20 @@
 import React from 'react';
 
 const AccountBox = (props) => {
+    console.log('this.props : ', props)
 
     const AccountList = (
-        <tr>
-            <td>{props.saveState}</td>
-            <td>{props.takeState}</td>
-            <td>{props.remainState}</td>
-        </tr>
+        props.accountData.map(({type, money, result}, i) => (
+            <tr key={i}>
+                <td>{type === 'deposit' ? money : ''}</td>
+                <td>{type === 'withdraw' ? money : ''}</td>
+                <td>{result}</td>
+            </tr>
+        ))
     )
+
     return (
-        <div className="AccountBox">
+        <div className="AccountList">
             <table>
                 <thead>
                     <tr>

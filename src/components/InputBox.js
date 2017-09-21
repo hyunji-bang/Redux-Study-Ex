@@ -1,16 +1,23 @@
 import React from 'react';
 
 class InputBox extends React.Component {
-    render(){
+
+    calc = type => {
+        console.log('input this.props >>>>>>> ',   this.props.calculate);
+
+        this.props.calculate(type, this._input.value);
+        this._input.value = '';
+        this._input.focus();
+    }
+
+    render() {
+
         return (
-            <div className="InputBox">
-                <input type="number" onChange={this.props.handleInput}/>
-                <button onClick={this.props.updateSave}>
-                    입금
-                </button>
-                <button onClick={this.props.updateTake}>
-                    출금
-                </button>
+            <div>
+                <input type="text"
+                       ref={ref => this._input = ref} />
+                <button onClick={() => this.calc('deposit')}>입금</button>
+                <button onClick={() => this.calc('withdraw')}>출금</button>
             </div>
         )
     }

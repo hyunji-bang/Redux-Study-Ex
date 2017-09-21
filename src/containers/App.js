@@ -3,51 +3,39 @@ import InputBox from '../components/InputBox';
 import AccountBox from '../components/AccountBox';
 
 class App extends React.Component {
-    constructor(){
-        super();
-        this.state = {
-            input: 0,
-            remain: 0,
-            save: 0,
-            take: 0
-        };
-        this.handleInput = this.handleInput.bind(this)
-        this.updateSave = this.updateSave.bind(this)
-        this.updateTake = this.updateTake.bind(this)
+    state = {
+        accountData: []
     };
-    handleInput = e => {
+
+
+    // 2번째 방법 ---------------------------------------------------
+    calculate = (type, money) => {
+        money = money * 1; //숫자형으로 바꿔주기;
+        const prevAccount = this.state.accountData;
+        const prevLength = prevAccount.length;
+        const lastResult = prevLength ? (prevAccount[prevLength - 1].result) : 0;   // lastResult state로 따로 빼도 됨.
+
         this.setState({
-            input: e.target.value
+            accountData: [
+                ...this.state.accountData, {
+                    type,
+                    money,
+                    result: lastResult + (type === 'deposit' ? 1 : -1 ) * money
+                }
+            ]
         })
     }
-    updateSave = input => {
-        this.setState({
-            save: this.state.save + ( this.state.input * 1 ),
-            remain: this.state.remain + ( this.state.input * 1 )
-        });
-    }
-    updateTake = input => {
-        this.setState({
-            take: this.state.take - ( this.state.input * 1),
-            remain: this.state.remain - ( this.state.input * 1)
-        });
-    }
-    render(){
-        // console.log(this.state.save);
+
+    render() {
+
         return (
-            <div className="App">
-                <InputBox
-                    handleInput={this.handleInput}
-                    updateSave={this.updateSave}
-                    updateTake={this.updateTake}
-                    />
+            <div>
+                <InputBox calculate={this.calculate.bind(this)}/>
                 <AccountBox
-                    saveState={this.state.save}
-                    takeState={this.state.take}
-                    remainState={this.state.remain}
+                    accountData={this.state.accountData}
                 />
             </div>
-        )
+        );
     }
 }
 
